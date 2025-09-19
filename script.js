@@ -8,10 +8,23 @@ const taskCategory = document.getElementById("category");
 const taskDeadline = document.getElementById("deadline");
 const taskStatus = document.getElementById("status");
 const addTaskButton = document.getElementById("add-task-button");
+const taskListItem = document.getElementById("task-list-item");
 
-// create function addTask 1. grabs user input and pushes into taskList using .push method, 2. grabs selections (category, deadline, due date) and puts everything in an object 3. clears input field
+// create function addTask 1. grabs user input and pushes into taskList using .push method, 2. grabs selections (category, deadline, due date) and puts everything in an object 3. displays list 4. clears input field
+
 function addTask() {
-  let value = taskInput.value;
+  const value = taskInput.value;
+  const category = taskCategory.value;
+  const deadline = taskDeadline.value;
+  const status = taskStatus.value;
+
+  const taskObject = {
+    value,
+    category,
+    dealine,
+    status,
+  };
+
   taskList.push(value);
   console.log(taskList);
 }
