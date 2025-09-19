@@ -2,7 +2,7 @@
 
 const taskList = [];
 
-// create variables and assign to DOM elements for input, button, and list
+// Create variables and assign to DOM elements for input, button, and list
 const taskInput = document.getElementById("add-task-input");
 const taskCategory = document.getElementById("category");
 const taskDeadline = document.getElementById("deadline");
@@ -10,25 +10,35 @@ const taskStatus = document.getElementById("status");
 const addTaskButton = document.getElementById("add-task-button");
 const taskListItem = document.getElementById("task-list-item");
 
-// create function addTask 1. grabs user input and pushes into taskList using .push method, 2. grabs selections (category, deadline, due date) and puts everything in an object 3. displays list 4. clears input field
+// Hook up button to event listener
+addTaskButton.addEventListener("click", addTask);
+
+// Create function addTask 1. grabs user input and pushes into taskList using .push method, 2. grabs selections (category, deadline, due date) and puts everything in an object 3. clears input field
 
 function addTask() {
-  const value = taskInput.value;
+  const input = taskInput.value;
   const category = taskCategory.value;
   const deadline = taskDeadline.value;
   const status = taskStatus.value;
 
   const taskObject = {
-    value,
+    input,
     category,
-    dealine,
+    deadline,
     status,
   };
 
-  taskList.push(value);
-  console.log(taskList);
+  taskList.push(taskObject);
+  taskInput.value = "";
+  console.log(taskObject);
+  renderList();
 }
 
-// create function to render and update task list, use appendchild?
-// hook up addTask button to functions
-addTaskButton.addEventListener("click", addTask);
+// Create function to render and update task list, use appendchild?
+function renderList() {
+  taskList.forEach((task) => {
+    const li = document.createElement("li");
+    li.textContent = `${task.input} - ${task.category} - ${task.deadline} - ${task.status}`;
+    taskListItem.appendChild(li);
+  });
+}
