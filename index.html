@@ -7,29 +7,29 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="script.js" defer></script>
 </head>
-<body class="bg-slate-600 text-white">
-    <section class="flex flex-col justify-center align-center items-center border-2 m-24 p-6 rounded-lg">
-        <h1 class="text-4xl font-bold text-white mb-4 p-6">Tasker</h1>
+<body>
+    <section class="flex flex-col justify-center align-center items-center border-2 m-24 p-6 rounded-xl">
+        <h1 class="text-4xl font-bold text-grey-100 mb-4 p-6">Tasker</h1>
         <div>
-            <label for="addTask" class="mr-2 text-white">Task name:</label>
+            <label for="addTask">Task name:</label>
             <input type="text" 
                     id="addTask"
                     placeholder="Add task"
-                    class="p-1 b-2 mb-4 rounded-lg"
+                    class="border-2 p-1 mb-4 rounded-lg text-grey-100"
                     />
 
         </div>
         <div>
             <label for="category">Category:</label>
-            <select name="category" id="category">
+            <select name="category" id="category" class="border-2 rounded-md">
                 <option value="school">School</option>
                 <option value="work">Work</option>
                 <option value="home">Home</option>        
             </select>
-            <label for="deadline">Deadline:</label>
-            <input type="date" id="deadline" name="deadline" min="2025-01-01">
-            <label for="status">Status:</label>
-            <select name="status" id="status">
+            <label for="deadline"  class="ml-4">Deadline:</label>
+            <input type="date" id="deadline" name="deadline" min="2025-01-01" class="border-2 rounded-md">
+            <label for="status" class="ml-4">Status:</label>
+            <select name="status" id="status" class="border-2 rounded-md">
                 <option value="inProgress">In Progress</option>
                 <option value="completed">Completed</option>
                 <option value="overdue">Overdue</option>        
