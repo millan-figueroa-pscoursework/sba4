@@ -7,15 +7,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="script.js" defer></script>
 </head>
-<body>
-    <section class="flex flex-col justify-center align-center items-center">
-        <h1 class="text-2xl mb-4 p-6">Tasker</h1>
+<body class="bg-slate-600 text-white">
+    <section class="flex flex-col justify-center align-center items-center border-2 m-24 p-6 rounded-lg">
+        <h1 class="text-4xl font-bold text-white mb-4 p-6">Tasker</h1>
         <div>
-            <label for="addTask">Task name:</label>
+            <label for="addTask" class="mr-2 text-white">Task name:</label>
             <input type="text" 
                     id="addTask"
                     placeholder="Add task"
-                    class="p-4 b-2"
+                    class="p-1 b-2 mb-4 rounded-lg"
                     />
 
         </div>
@@ -35,7 +35,7 @@
                 <option value="overdue">Overdue</option>        
             </select>
         </div>
-            <button id="addTask">Add Task</button>
+            <button id="addTask" class="bg-violet-400 px-6 py-2 rounded-lg mt-4">Add Task</button>
     </section>
     
 </body>
