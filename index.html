@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <section class="flex flex-col justify-center align-center items-center">
+        <h1 class="text-2xl mb-4 p-6">Tasker</h1>
+        <div>
+            <label for="addTask">Task name:</label>
+            <input type="text" 
+                    id="addTask"
+                    placeholder="Add task"
+                    class="p-4 b-2"
+                    />
+
+        </div>
+        <div>
+            <label for="category">Category:</label>
+            <select name="category" id="category">
+                <option value="school">School</option>
+                <option value="work">Work</option>
+                <option value="home">Home</option>        
+            </select>
+            <label for="deadline">Deadline:</label>
+            <input type="date" id="deadline" name="deadline" min="2025-01-01">
+            <label for="status">Status:</label>
+            <select name="status" id="status">
+                <option value="inProgress">In Progress</option>
+                <option value="completed">Completed</option>
+                <option value="overdue">Overdue</option>        
+            </select>
+        </div>
+            <button id="addTask">Add Task</button>
+    </section>
+    
+</body>
+</html>
