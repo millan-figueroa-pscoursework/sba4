@@ -16,12 +16,14 @@ addTaskButton.addEventListener("click", addTask);
 // Create function addTask 1. grabs user input and pushes into taskList using .push method, 2. grabs selections (category, deadline, due date) and puts everything in an object 3. clears input field
 
 function addTask() {
+  const id = Date.now();
   const input = taskInput.value;
   const category = taskCategory.value;
   const deadline = taskDeadline.value;
   const status = taskStatus.value;
 
   const taskObject = {
+    id,
     input,
     category,
     deadline,
@@ -45,7 +47,7 @@ function renderList() {
 
     // Render name, category, deadline
     const li = document.createElement("li");
-    li.textContent = `${task.input} - ${task.category} - ${task.deadline} - `;
+    li.textContent = `${task.input} - ${task.category} - ${task.deadline} - ${task.status} - `;
 
     // Render selector for status
     const selectStatus = taskStatus.cloneNode(true);
@@ -56,7 +58,12 @@ function renderList() {
   }
 }
 
+// Save to localStorage so tasks can be restored on refresh
+function saveToStorage() {
+  localStorage.setItem("todo.tasks", JSON.stringify(taskList));
+}
+
 // Filter by status or category
-// If date is in the past, render OVERDUE instead?
+// If date is in the past, render date in red and overdue
 // Update displayed task list on status changes
 // Persisting Task Data with Local Storage
