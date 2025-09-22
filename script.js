@@ -42,10 +42,15 @@ function renderList() {
     // Slice off last element of list to avoid duplicate lis
     let slicedList = taskList.slice(-1);
     let task = slicedList[i];
+
     const li = document.createElement("li");
-    li.textContent = `${task.input} - ${task.category} - ${task.deadline} - ${task.status}`;
+    li.textContent = `${task.category} - ${task.input} - ${task.deadline} - `;
+
+    const selectStatus = taskStatus.cloneNode(true);
+
+    li.appendChild(selectStatus);
     taskListItem.appendChild(li);
   }
 }
 
-// Clear list item
+// Update task status
