@@ -43,14 +43,20 @@ function renderList() {
     let slicedList = taskList.slice(-1);
     let task = slicedList[i];
 
+    // Render name, category, deadline
     const li = document.createElement("li");
-    li.textContent = `${task.category} - ${task.input} - ${task.deadline} - `;
+    li.textContent = `${task.input} - ${task.category} - ${task.deadline} - `;
 
+    // Render selector for status
     const selectStatus = taskStatus.cloneNode(true);
-
     li.appendChild(selectStatus);
     taskListItem.appendChild(li);
+
+    // Update task status on object?
   }
 }
 
-// Update task status
+// Filter by status or category
+// If date is in the past, render OVERDUE instead?
+// Update displayed task list on status changes
+// Persisting Task Data with Local Storage
