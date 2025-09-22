@@ -34,11 +34,18 @@ function addTask() {
   renderList();
 }
 
-// Create function to render and update task list, use appendchild?
+// Create function to render and update task list, use loop  and appendchild?
+
 function renderList() {
-  taskList.forEach((task) => {
+  // Loop through tasklist and render li for each task object
+  for (let i = 0; i < taskList.length; i++) {
+    // Slice off last element of list to avoid duplicate lis
+    let slicedList = taskList.slice(-1);
+    let task = slicedList[i];
     const li = document.createElement("li");
     li.textContent = `${task.input} - ${task.category} - ${task.deadline} - ${task.status}`;
     taskListItem.appendChild(li);
-  });
+  }
 }
+
+// Clear list item
