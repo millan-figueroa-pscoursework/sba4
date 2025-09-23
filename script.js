@@ -13,6 +13,12 @@ const taskStatus = document.getElementById("status");
 // Hook up button to event listener
 addTaskButton.addEventListener("click", addTask);
 
+// Move loadFromStorage so its called on startup and repopulates list from storage
+document.addEventListener("DOMContentLoaded", () => {
+  loadFromStorage();
+  renderList();
+});
+
 // ---- ADDTASK function grabs user input and pushes into taskList, puts everything in an object, clears input field
 
 function addTask() {
@@ -37,9 +43,8 @@ function addTask() {
 
   taskInput.value = "";
 
-  loadFromStorage();
   renderList();
-  console.log(taskObject);
+  // console.log(taskObject);
 }
 
 // ---- RENDERLIST function to loop thru taskList and render list items
@@ -76,7 +81,7 @@ function renderList() {
 
     // Add eventlistener to update task in storage
     selectStatus.addEventListener("change", () => {
-      console.log("Something changed");
+      task.status = selectStatus.value;
       saveToStorage();
     });
 
@@ -100,7 +105,8 @@ function loadFromStorage() {
   }
 }
 
-console.log(localStorage.getItem("todo.tasks"));
+console.log(taskList);
+
 // TODO:
 // Filter by status or category
 // If date is in the past, render date in red and overdue
