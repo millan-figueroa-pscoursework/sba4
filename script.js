@@ -8,25 +8,26 @@ const taskCategory = document.getElementById("category");
 const taskDeadline = document.getElementById("deadline");
 const addTaskButton = document.getElementById("add-task-button");
 const taskListItem = document.getElementById("task-list-item");
+const taskStatus = document.getElementById("status");
 
 // Hook up button to event listener
 addTaskButton.addEventListener("click", addTask);
 
-// Create function addTask 1. grabs user input and pushes into taskList, puts everything in an object, clears input field
+// ---- ADDTASK function grabs user input and pushes into taskList, puts everything in an object, clears input field
 
 function addTask() {
   const id = Date.now(); // id for updating task status later
   const input = taskInput.value;
   const category = taskCategory.value;
   const deadline = taskDeadline.value;
-  const defaultStatus = "in progress"; // default in-progress status makes more sense
+  const status = taskStatus.value;
 
   const taskObject = {
     id,
     input,
     category,
     deadline,
-    defaultStatus,
+    status,
   };
 
   taskList.push(taskObject);
@@ -41,7 +42,7 @@ function addTask() {
   console.log(taskObject);
 }
 
-// Create function to loop thru taskList and render list items
+// ---- RENDERLIST function to loop thru taskList and render list items
 
 function renderList() {
   // Clear list instead of slice to fix error and prevent duplicates
@@ -52,11 +53,11 @@ function renderList() {
     // Render name, category, deadline, and separate selector for status
 
     const li = document.createElement("li");
-    li.textContent = `${task.input} - ${task.category} - ${task.deadline} - ${task.defaultStatus} `;
+    li.textContent = `${task.input}   |   ${task.category}   |   ${task.deadline}   |   `;
 
     // Render selector for status and create array with status options
     const selectStatus = document.createElement("select");
-    const statuses = ["in-progress", "complete", "overdue!"];
+    const statuses = ["in-progress", "complete", "overdue"];
 
     // loop through statuses array
     for (let i = 0; i < statuses.length; i++) {
@@ -69,6 +70,15 @@ function renderList() {
       option.textContent = status;
       selectStatus.appendChild(option);
     }
+
+    // Add default value for dropdown
+    selectStatus.value = task.status || "in-progress";
+
+    // Add eventlistener to update task in storage
+    selectStatus.addEventListener("change", () => {
+      console.log("Something changed");
+      saveToStorage();
+    });
 
     li.appendChild(selectStatus);
     taskListItem.appendChild(li);
