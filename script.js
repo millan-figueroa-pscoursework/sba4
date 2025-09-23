@@ -6,21 +6,20 @@ const taskList = [];
 const taskInput = document.getElementById("add-task-input");
 const taskCategory = document.getElementById("category");
 const taskDeadline = document.getElementById("deadline");
-const taskStatus = document.getElementById("status");
 const addTaskButton = document.getElementById("add-task-button");
 const taskListItem = document.getElementById("task-list-item");
 
 // Hook up button to event listener
 addTaskButton.addEventListener("click", addTask);
 
-// Create function addTask 1. grabs user input and pushes into taskList using .push method, 2. grabs selections (category, deadline, due date) and puts everything in an object 3. clears input field
+// Create function addTask 1. grabs user input and pushes into taskList, puts everything in an object, clears input field
 
 function addTask() {
   const id = Date.now();
   const input = taskInput.value;
   const category = taskCategory.value;
   const deadline = taskDeadline.value;
-  const status = taskStatus.value;
+  const status = "in proggress"; // default status makes more sense
 
   const taskObject = {
     id,
@@ -31,8 +30,14 @@ function addTask() {
   };
 
   taskList.push(taskObject);
+
+  // Saves new task data to local storage
+  saveToStorage();
+
   taskInput.value = "";
   console.log(taskObject);
+
+  loadFromStorage();
   renderList();
 }
 
@@ -45,24 +50,34 @@ function renderList() {
     let slicedList = taskList.slice(-1);
     let task = slicedList[i];
 
-    // Render name, category, deadline
+    // Render name, category, deadline, and separate selector for status
+    const selectStatus = document.createElement("select");
+    // ["in-progress", "complete"]; ??
+
     const li = document.createElement("li");
-    li.textContent = `${task.input} - ${task.category} - ${task.deadline} - ${task.status} - `;
+    li.textContent = `${task.input} - ${task.category} - ${task.deadline} - `;
 
     // Render selector for status
-    const selectStatus = taskStatus.cloneNode(true);
     li.appendChild(selectStatus);
     taskListItem.appendChild(li);
-
-    // Update task status on object?
   }
 }
 
-// Save to localStorage so tasks can be restored on refresh
+// Save to and load from localStorage so tasks can be restored on refresh
 function saveToStorage() {
   localStorage.setItem("todo.tasks", JSON.stringify(taskList));
 }
 
+function loadFromStorage() {
+  const storedTasks = localStorage.getItem("todo.tasks");
+
+  // clears current array and repopulates with saved data
+  if (storedTasks) {
+    taskList.length = 0;
+    taskList.push(...JSON.parse(storedTasks));
+  }
+}
+// TODO:
 // Filter by status or category
 // If date is in the past, render date in red and overdue
 // Update displayed task list on status changes
