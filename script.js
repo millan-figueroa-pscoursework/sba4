@@ -19,7 +19,7 @@ function addTask() {
   const input = taskInput.value;
   const category = taskCategory.value;
   const deadline = taskDeadline.value;
-  const status = "in proggress"; // default status makes more sense
+  const status = "in progress"; // default status makes more sense
 
   const taskObject = {
     id,
@@ -35,27 +35,26 @@ function addTask() {
   saveToStorage();
 
   taskInput.value = "";
-  console.log(taskObject);
 
   loadFromStorage();
   renderList();
+  console.log(taskObject);
 }
 
 // Create function to render and update task list, use loop  and appendchild?
 
 function renderList() {
-  // Loop through tasklist and render li for each task object
-  for (let i = 0; i < taskList.length; i++) {
-    // Slice off last element of list to avoid duplicate lis
-    let slicedList = taskList.slice(-1);
-    let task = slicedList[i];
+  // Clear list instead of slice to fix error and prevent duplicates
+  taskListItem.innerHTML = "";
 
+  // Change loop to for...of bc iterating items not indexes (cleaner)
+  for (const task of taskList) {
     // Render name, category, deadline, and separate selector for status
     const selectStatus = document.createElement("select");
     // ["in-progress", "complete"]; ??
 
     const li = document.createElement("li");
-    li.textContent = `${task.input} - ${task.category} - ${task.deadline} - `;
+    li.textContent = `${task.input} - ${task.category} - ${task.deadline} - ${task.status} `;
 
     // Render selector for status
     li.appendChild(selectStatus);
