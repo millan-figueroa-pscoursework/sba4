@@ -1,5 +1,19 @@
 # Dynamic Task Management App
 
+## Reflection Questions
+
+### Challenges faced during the project.
+
+From the beginning, my setup was confusing - having a status dropdown before adding the task (along with task name, due date, category) gave me a lot of problems so I made an executive decision to remove it and add it to the task itself. I faced a lot of challenges mainly looping logic, I changed my loops many times and had a very hard time with the function to render the elements. I had to do a lot of research to figure out things like how to render different types of elements. I also had a hard time with the local storage part, it turns out I had it in the wrong function and my list kept disappearing. I really learned a lot in this project even though it feels like the finished product is not very impressive for the amount of coding it required.
+
+### How you approached solving those challenges.
+
+I googled, went over the module lessons, looked at other people's code on my classmate's repos to look at the different approaches people were taking. Doing the algorithm group study over the weekend actually helped me get back into algorithmic thinking mentality after doing so much design.
+
+### What you would improve if given more time.
+
+I created the html structure and added very minimal Tailwind styles so its easier for me to see what im doing. I would like to add real styling when i get a chance. Also I spent the biggest chunk of time and effort into rendering the elements to the DOM and couldn't even begin working on the filtering function until I figured out how to render a status selector in my li and add the functionality to update the status value on the object itself. So my filtering functionality is definitely buggy, I would like to refactor that for sure. Lastly, I want to fix the status select element so it renders conditionally instead of being there even before the task is creatied.
+
 ## Objective
 
 You will create a dynamic task management app that lets users:
@@ -43,40 +57,6 @@ You will create a dynamic task management app that lets users:
 
 - Use **local storage** to save the current state of the task list so that tasks are restored when the page is refreshed.
 - Ensure that task data (including name, category, deadline, and status) is stored and retrieved correctly.
-
----
-
-## Project Instructions
-
-### Create the HTML Structure
-
-- Input fields for task name, category, deadline, and status.
-- A button to add new tasks.
-- A dropdown or buttons to filter tasks by status or category.
-- A display area to show the list of tasks, including options to update task status.
-
-### Write the JavaScript Code
-
-- Use an array to store tasks, each represented as an object.
-- Write functions to add tasks, update task status, check overdue tasks, and filter tasks.
-- Use DOM manipulation to display the task list dynamically.
-- Implement local storage to persist task data.
-
-### Test Your Application
-
-- Add multiple tasks and ensure they are displayed correctly.
-- Test the **Update Status** functionality to ensure tasks can be marked as _Completed_ or _Overdue_.
-- Filter tasks by status or category and ensure the correct tasks are displayed.
-- Refresh the page and ensure the tasks are restored from local storage.
-
----
-
-## Tips for Success
-
-- **Break down the tasks:** Start with the core functionality (adding tasks and displaying them), then move to more complex features like filtering and local storage.
-- **Test frequently:** Test each feature separately to ensure it works before moving on.
-- **Keep your code modular:** Use functions to organize your logic and make your code more readable and maintainable.
-- **Think about the user experience:** Ensure the task list is easy to read and users get clear feedback when updating or filtering tasks.
 
 ---
 
